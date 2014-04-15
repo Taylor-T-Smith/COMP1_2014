@@ -1,4 +1,4 @@
-#Task 1 Answers
+﻿#Task 1 Answers
 
 ##Question 3 answers
 
@@ -12,9 +12,27 @@
 ##Pseudo Code for Question 3
 
 FUNCTION GetPlayerName()
-	OUTPUT 
+	OUTPUT('') 
 	valid: Boolean
 	valid ← False
 	WHILE NOT valid DO
 		PlayerName: String
-		PlayerName ← 
+		PlayerName ← INPUT
+		IF PlayerName = None
+			OUTPUT('You must enter something for your name')
+		ELSE
+			valid ← TRUE
+			END IF
+	OUTPUT('')
+	RETURN PlayerName
+
+## Question 3b
+
+1. UpdateRecentScores()
+
+##Task 5 questions
+
+1.Datetime module needs to be imprted
+2.DisplayRecentScores(), UpdateRecentScores(), TRecentScore(), ResetRecentScore()
+3.
+		
