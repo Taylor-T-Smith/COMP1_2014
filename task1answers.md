@@ -32,7 +32,20 @@ FUNCTION GetPlayerName()
 
 ##Task 5 questions
 
-1.Datetime module needs to be imprted
+1.Datetime module needs to be imported
 2.DisplayRecentScores(), UpdateRecentScores(), TRecentScore(), ResetRecentScore()
-3.
+3.use string.strftime('%d/%m/%y')
+
+## Additional Questions
+
+##Variable Roles
+
+1.
+2.
+
+## Functions and Parameters
+
+1. Passing by value creates a copy of the variable and only the copied variable changes meaning the original stays the same. Passing by reference also creates a copy but the original variable is changed.
+2. 
+
 		

@@ -4,7 +4,7 @@
 # developed in the Python 3.2 programming environment
 # version 2 edited 06/03/2014
 
-import random
+import random, datetime
 
 NO_OF_RECENT_SCORES = 3
 
@@ -17,6 +17,7 @@ class TRecentScore():
   def __init__(self):
     self.Name = ''
     self.Score = 0
+    self.Date = ''
 
 Deck = [None]
 RecentScores = [None]
@@ -171,10 +172,10 @@ def DisplayRecentScores(RecentScores):
   print()
   print('Recent Scores: ')
   print()
-  print('{0:<10} {1:<15}'.format('Name','Score'))
-  print()
+  print('{0:<15} {1:<15} {2:<15}'.format('Name','Score','Date'))
+  print('-----------------------------------------')
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
-    print('{0:<10} {1:<15}'.format(RecentScores[Count].Name,RecentScores[Count].Score))
+    print('{0:<15} {1:<15} {2:<15}'.format(RecentScores[Count].Name,RecentScores[Count].Score,RecentScores[Count].Date))
   print()
   print('Press the Enter key to return to the main menu')
   input()
@@ -198,6 +199,8 @@ def UpdateRecentScores(RecentScores, Score):
       Count = NO_OF_RECENT_SCORES
     RecentScores[Count].Name = PlayerName
     RecentScores[Count].Score = Score
+    CurrentDate = datetime.datetime.now()
+    RecentScores[Count].Date = CurrentDate.strftime('%d/%m/%y')
   else:
     print('Score was not added to the high score table')
     
