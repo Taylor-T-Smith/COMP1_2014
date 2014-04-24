@@ -73,6 +73,7 @@ def DisplayMenu():
   print('2. Play game (without shuffle)')
   print('3. Display recent scores')
   print('4. Reset recent scores')
+  print('5. Options')
   print()
   print('Select an option from the menu (or enter q to quit): ', end='')
 
@@ -181,6 +182,25 @@ def DisplayRecentScores(RecentScores):
   input()
   print()
 
+def DisplayOptions():
+  print('1. Set Ace to be HIGH or LOW')
+  print()
+  
+def GetOptionChoice():
+  OptionChoice = input('Select an option from the menu (or enter q to quit): ')
+  return OptionChoice
+
+def SetOptions(OptionChoice):
+  if OptionChoice == '1':
+    SetAceHighOrLow()
+
+def SetAceHighOrLow():
+    Choice = input('Do you want the Ace to be (h)igh or (l)ow: ')
+    if Choice in ['h', 'H']:
+      
+    elif Choice in ['l', 'L']:
+      
+
 def UpdateRecentScores(RecentScores, Score):
   Option = input('Would you like to add your score to the high score table? (y or n): ')
   if Option == 'y':
@@ -252,3 +272,7 @@ if __name__ == '__main__':
       DisplayRecentScores(RecentScores)
     elif Choice == '4':
       ResetRecentScores(RecentScores)
+    elif Choice == '5':
+      DisplayOptions()
+      OptionChoice = GetOptionChoice()
+      SetOptions(OptionChoice)

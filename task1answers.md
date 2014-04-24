@@ -40,8 +40,26 @@ FUNCTION GetPlayerName()
 
 ##Variable Roles
 
-1.
-2.
+Question 1
+1. Fixed Value - a variable which was made with no calculations 
+2. Stepper - a variable that changes in a predictable manor, such as the count variable
+3. Most Recent Holder - holds the latest value encountered 
+4. Most Wanted Holder - stores the most appropriate value encountered 
+5. Gatherer - a variable that accumulates the effects of other values
+6. Transformation - stores a value as a result from a calculation
+7. follower - a variable that gets its new value from an old value from different data
+8. Temporary - holds a value for a short time only 
+
+Question 2
+1. NoOfSwaps = 1000
+2. Count
+3. LastCard.Rank
+4. PlayerName = GetPlayerName()
+5.
+6. count = count + 1
+7. ThisCard.Rank = Deck[1].Rank
+8. 
+
 
 ## Functions and Parameters
 
