@@ -219,6 +219,7 @@ def GetOptionChoice():
   valid = False
   while not valid:
     OptionChoice = input('Select an option from the menu (or enter q to quit): ')
+    print()
     if OptionChoice != '':
       valid = True
   return OptionChoice
@@ -234,6 +235,7 @@ def SetAceHighOrLow():
   valid = False
   while not valid:
     Choice = input('Do you want the Ace to be (h)igh or (l)ow: ')
+    print()
     if Choice in ['h', 'H']:
       AceHigh = True
       print('Ace is now High')
@@ -244,8 +246,15 @@ def SetAceHighOrLow():
       valid = True
   return AceHigh
 
-def SaveHighScores():
-  
+def SaveHighScores(RecentScores):
+  with open ('Scoresheet.dat',mode='wb') as my_file:
+    valid = False
+    ScoreList = []
+    while not valid:
+      ScoreList = RecentScores()
+      ScoreList = RecentScore.
+    
+  print()
 
 def UpdateRecentScores(RecentScores, Score):
   Option = input('Would you like to add your score to the high score table? (y or n): ')
@@ -275,10 +284,10 @@ def BubbleSortScores(RecentScores):
     while swapped:
         swapped = False
         for count in range(len(RecentScores)):
-            if RecentScores[Count].Score > RecentScores[Count+1].Score:
-                temp = RecentScores[Count].Score
-                RecentScores[Count].Score = RecentScores[Count+1].Score
-                RecentScores[Count+1].Score = temp
+            if RecentScores[Count+1].Score > RecentScores[Count+2].Score:
+                temp = RecentScores[Count+1].Score
+                RecentScores[Count+1].Score = RecentScores[Count+2].Score
+                RecentScores[Count+2].Score = temp
                 swapped = True
     return RecentScores
     

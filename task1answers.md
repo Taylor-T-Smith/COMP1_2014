@@ -41,8 +41,8 @@ FUNCTION GetPlayerName()
 ##Variable Roles
 
 Question 1
-1. Fixed Value - a variable which was made with no calculations 
-2. Stepper - a variable that changes in a predictable manor, such as the count variable
+1. Fixed Value - a variable which was set and never changes
+2. Stepper - a variable that increments every time a part of a program is called
 3. Most Recent Holder - holds the latest value encountered 
 4. Most Wanted Holder - stores the most appropriate value encountered 
 5. Gatherer - a variable that accumulates the effects of other values
@@ -54,16 +54,17 @@ Question 2
 1. NoOfSwaps = 1000
 2. Count
 3. LastCard.Rank
-4. PlayerName = GetPlayerName()
+4. NextCard = TCard()
 5.
-6. count = count + 1
-7. ThisCard.Rank = Deck[1].Rank
-8. 
+6. higher = IsNextCardHigher(LastCard, NextCard) or FoundSpace = False
+7. LastCard = TCard() 
+8. SwapSpace = TCarsd() 
 
 
 ## Functions and Parameters
 
 1. Passing by value creates a copy of the variable and only the copied variable changes meaning the original stays the same. Passing by reference also creates a copy but the original variable is changed.
-2. 
+2. value - Score
+	Reference - ThisCard
 
 		
