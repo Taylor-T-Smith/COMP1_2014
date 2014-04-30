@@ -197,6 +197,7 @@ def ResetRecentScores(RecentScores):
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
     RecentScores[Count].Name = ''
     RecentScores[Count].Score = 0
+    RecentScores[Count].Date = ''
 
 def DisplayRecentScores(RecentScores):
   print()
@@ -204,8 +205,9 @@ def DisplayRecentScores(RecentScores):
   print()
   print('{0:<15} {1:<15} {2:<15}'.format('Name','Score','Date'))
   print('-----------------------------------------')
+  print(RecentScores)
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
-    print('{0:<15} {1:<15} {2:<15}'.format(RecentScores[Count].Name,RecentScores[Count].Score,RecentScores[Count].Date))
+    print('{0:<15} {1:<15} {2:<15}'.format(RecentScores[Count].Name, RecentScores[Count].Score, RecentScores[Count].Date))
   print()
   print('Press the Enter key to return to the main menu')
   input()
@@ -252,7 +254,7 @@ def SaveHighScores(RecentScores):
     ScoreList = []
     while not valid:
       ScoreList = RecentScores()
-      ScoreList = RecentScore.
+      ScoreList = RecentScore.scores
     
   print()
 
@@ -276,20 +278,23 @@ def UpdateRecentScores(RecentScores, Score):
     RecentScores[Count].Score = Score
     CurrentDate = datetime.datetime.now()
     RecentScores[Count].Date = CurrentDate.strftime('%d/%m/%y')
+    print(RecentScores.Name)
+    print(RecentScores.Score)
+    print(RecentScores.Date)
   else:
     print('Score was not added to the high score table')
+
 
 def BubbleSortScores(RecentScores):
     swapped = True
     while swapped:
         swapped = False
-        for count in range(len(RecentScores)):
-            if RecentScores[Count+1].Score > RecentScores[Count+2].Score:
-                temp = RecentScores[Count+1].Score
-                RecentScores[Count+1].Score = RecentScores[Count+2].Score
-                RecentScores[Count+2].Score = temp
+        for Count in range(1, NO_OF_RECENT_SCORES):
+            if RecentScores[Count+1].Score > RecentScores[Count].Score:
+                temp = RecentScores[Count+1]
+                RecentScores[Count+1] = RecentScores[Count]
+                RecentScores[Count] = temp
                 swapped = True
-    return RecentScores
     
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
