@@ -103,6 +103,7 @@ def DisplayMenu():
   print('4. Reset recent scores')
   print('5. Options')
   print('6. Save high scores')
+  print('7. Load High Scores')
   print()
   print('Select an option from the menu (or enter q to quit): ', end='')
 
@@ -205,7 +206,6 @@ def DisplayRecentScores(RecentScores):
   print()
   print('{0:<15} {1:<15} {2:<15}'.format('Name','Score','Date'))
   print('-----------------------------------------')
-  print(RecentScores)
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
     print('{0:<15} {1:<15} {2:<15}'.format(RecentScores[Count].Name, RecentScores[Count].Score, RecentScores[Count].Date))
   print()
@@ -248,16 +248,25 @@ def SetAceHighOrLow():
       valid = True
   return AceHigh
 
-def SaveHighScores(RecentScores):
-  with open ('Scoresheet.dat',mode='wb') as my_file:
-    valid = False
-    ScoreList = []
-    while not valid:
-      ScoreList = RecentScores()
-      ScoreList = RecentScore.scores
-    
-  print()
+def SaveScores(RecentScores):
+  with open ('Scoresheet.txt',mode='w', encoding='utf-8') as my_file:
+    for Count in range(1,NO_OF_RECENT_SCORES+1):
+      my_file.write(RecentScores[Count].Name+'\n')
+      my_file.write(str(RecentScores[Count].Score)+'\n')
+      my_file.write(RecentScores[Count].Date+'\n') 
+  print('High Scores Saved')
 
+def LoadScores():
+  with open ('Scoresheet.txt', mode='r', encoding='utf-8') as my_file:
+    for Count in my_file:
+      if Count == 1:
+        RecentScores[Count].Name = line.rstrip('\n')
+      elif Count == 2:
+        RecentScores[Count].Score = int(line.rstrip('\n'))
+      elif Count == 3:
+        RecentScores[Count].Date = line.rstrip('\n')
+  print('High Scores Loaded')
+  
 def UpdateRecentScores(RecentScores, Score):
   Option = input('Would you like to add your score to the high score table? (y or n): ')
   if Option == 'y':
@@ -278,9 +287,6 @@ def UpdateRecentScores(RecentScores, Score):
     RecentScores[Count].Score = Score
     CurrentDate = datetime.datetime.now()
     RecentScores[Count].Date = CurrentDate.strftime('%d/%m/%y')
-    print(RecentScores.Name)
-    print(RecentScores.Score)
-    print(RecentScores.Date)
   else:
     print('Score was not added to the high score table')
 
@@ -326,6 +332,10 @@ def PlayGame(Deck, RecentScores):
 
 if __name__ == '__main__':
   AceHigh = False
+  try:
+    LoadScores()
+  except IOError:
+    print('No Save File')
   for Count in range(1, 53):
     Deck.append(TCard())
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
@@ -342,7 +352,7 @@ if __name__ == '__main__':
       LoadDeck(Deck)
       PlayGame(Deck, RecentScores)
     elif Choice == '3':
-      RecentScores = BubbleSortScores(RecentScores)
+      BubbleSortScores(RecentScores)
       DisplayRecentScores(RecentScores)
     elif Choice == '4':
       ResetRecentScores(RecentScores)
@@ -351,4 +361,6 @@ if __name__ == '__main__':
       OptionChoice = GetOptionChoice()
       AceHigh = SetOptions(OptionChoice)
     elif Choice == '6':
-      SaveHighScores()
+      SaveScores(RecentScores)
+    elif Choice == '7':
+      LoadScores()
