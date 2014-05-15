@@ -260,11 +260,11 @@ def LoadScores():
   with open ('Scoresheet.txt', mode='r', encoding='utf-8') as my_file:
     for Count in my_file:
       if Count == 1:
-        RecentScores[Count].Name = line.rstrip('\n')
+        RecentScores[Count].Name = line
       elif Count == 2:
-        RecentScores[Count].Score = int(line.rstrip('\n'))
+        RecentScores[Count].Score = int(line)
       elif Count == 3:
-        RecentScores[Count].Date = line.rstrip('\n')
+        RecentScores[Count].Date = line
   print('High Scores Loaded')
   
 def UpdateRecentScores(RecentScores, Score):
