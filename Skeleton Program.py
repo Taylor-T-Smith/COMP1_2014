@@ -257,15 +257,36 @@ def SaveScores(RecentScores):
   print('High Scores Saved')
 
 def LoadScores():
-  with open ('Scoresheet.txt', mode='r', encoding='utf-8') as my_file:
-    for Count in my_file:
-      if Count == 1:
-        RecentScores[Count].Name = line
-      elif Count == 2:
-        RecentScores[Count].Score = int(line)
-      elif Count == 3:
-        RecentScores[Count].Date = line
-  print('High Scores Loaded')
+  try:
+    with open ('Scoresheet.txt', mode='r', encoding='utf-8') as my_file:
+      for Count in my_file:
+        if Count in [1,4,7]:
+          RecentScores[Count].Name = my_file.read(line.rstrip('\n'))
+        elif Count in [2,5,8]:
+          RecentScores[Count].Score = int(line.rstrip('\n'))
+        elif Count in [3,6,9]:
+         RecentScores[Count].Date = line.rstrip('\n')
+    print('High Scores Loaded')
+##  try:
+##    with open("Scorecheet.txt",mode="r")as my_file:
+##      count=1
+##      counttwo=1
+##      for line in my_file:
+##        temp=line.rstrip('\n')
+##        if count==1:
+##          RecentScores[counttwo].Name=temp
+##        elif count==2:
+##          RecentScores[counttwo].Score=int(temp)
+##        elif count==3:
+##          RecentScores[counttwo].Date=temp
+##          counttwo+=1
+##          count=0
+##        count+=1
+##        RecentScores.append(TRecentScore())
+  except IOError:
+    pass
+  return RecentScores
+ 
   
 def UpdateRecentScores(RecentScores, Score):
   Option = input('Would you like to add your score to the high score table? (y or n): ')
